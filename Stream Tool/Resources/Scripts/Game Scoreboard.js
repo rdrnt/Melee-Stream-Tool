@@ -15,6 +15,7 @@ let bestOfPrev;
 const roundSize = '32px';
 const casterSize = '24px';
 const twitterSize = '20px';
+const tournamentSize = '36px';
 
 //variables for the twitter/twitch constant change
 let socialInt1;
@@ -64,7 +65,9 @@ async function getData(scInfo) {
 	twitch1 = scInfo['caster1Twitch'];
 	let caster2 = scInfo['caster2Name'];
 	twitter2 = scInfo['caster2Twitter'];
-	twitch2 = scInfo['caster2Twitch'];;
+	twitch2 = scInfo['caster2Twitch'];
+
+  let tournamentName = scInfo['tournamentName'];
 
 
 	//first, things that will happen only the first time the html loads
@@ -145,6 +148,8 @@ async function getData(scInfo) {
 			//lets delay everything that comes after this so it shows after the intro
 			introDelay = 2.6;
 		}
+
+    updateText("tournamentName", tournamentName, tournamentSize);
 
 		//finally out of the intro, now lets start with player 1 first
 		//update player name and team name texts
@@ -268,6 +273,8 @@ async function getData(scInfo) {
 
 	//now things that will happen constantly
 	else {
+
+    updateText("tournamentName", tournamentName, tournamentSize);
 		
 		//player 1 time!
 		if (document.getElementById('p1Name').textContent != p1Name ||
